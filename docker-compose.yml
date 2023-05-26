@@ -1,0 +1,30 @@
+version: "3.8"
+services:
+  postgres:
+    image: postgres:12.4
+    container_name: db_pc_pokemon
+    ports:
+      - "35432:5432"
+    environment:
+      POSTGRES_DB: db
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: password
+  postgres_test:
+    image: postgres:12.4
+    container_name: db_test_pc_pokemon
+    ports:
+      - "35431:5431"
+    environment:
+      POSTGRES_DB: test
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: password
+  app:
+    container_name: app_pc_pokemon
+    restart: on-failure
+    build: .
+    volumes:
+      - .:/app
+    ports:
+      - "80:80"
+    depends_on:
+      - postgres

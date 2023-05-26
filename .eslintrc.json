@@ -1,0 +1,14 @@
+{
+    "root": true,
+    "extends": [
+        "eslint:recommended",
+        "eslint-config-airbnb-base"
+    ],
+    "rules": {
+        "import/extensions": "off",
+        "indent": [
+            "error",
+            2
+        ]
+    }
+}
